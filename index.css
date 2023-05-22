@@ -130,10 +130,19 @@
   }
   .parentDiv{
     width: 70%;
-    display: block;
+    display: grid;
+    max-height: 300px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
     border: 2px solid rgb(20, 20, 20);
     border-radius: 10px;
   }
+.student_info{
+  border: 1px solid rgb(20, 20, 20);
+    border-radius: 10px;
+    width: fit-content;
+    padding: 5px;
+}

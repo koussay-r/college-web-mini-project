@@ -1,7 +1,7 @@
 function fetcharray(){
     let globalArray=JSON.parse(localStorage.getItem('myArray'));
     console.log(globalArray)
-    if(globalArray==null){
+    if(globalArray==null||globalArray.length==0){
         const p = document.createElement('p');
         p.className="Nostudent";
         p.id="nostudent"
@@ -15,17 +15,30 @@ function fetcharray(){
             div.id = `${object.id}`; // Adding ID to the div
             div.className = 'student_info'; // Adding a class to the div
             const pElement = document.createElement('p');
-            pElement.textContent = `${object.name}`;
+            pElement.textContent = `Name : ${object.name}`;
             div.appendChild(pElement);
             const pElement1 = document.createElement('p');
-            pElement1.textContent = `${object.E_mail}`;
+            pElement1.textContent = `email : ${object.E_mail}`;
             div.appendChild(pElement1);
             const pElement2 = document.createElement('p');
-            pElement2.textContent = `${object.collegeName}`;
+            pElement2.textContent = `college name : ${object.collegeName}`;
             div.appendChild(pElement2);
             const pElement3 = document.createElement('p');
-            pElement3.textContent = `${object.number}`;
+            pElement3.textContent = `Number : ${object.number}`;
+            const buttons=document.createElement("div")
+            buttons.className="d-flex gap-3"
+            const update=document.createElement("button");
+            update.className="btn btn-primary"
+            update.id="updateId"
+            update.textContent="Update"
+            const Delete=document.createElement("button")
+            Delete.className="btn btn-secondary ml-1"
+            Delete.id="deleteId"
+            Delete.textContent="Delete"
+            buttons.appendChild(update)
+            buttons.appendChild(Delete)
             div.appendChild(pElement3);
+            div.appendChild(buttons)
             return div;
           });
           let container=document.getElementById("parenDiv");
@@ -38,6 +51,10 @@ let globalArray=JSON.parse(localStorage.getItem('myArray'))==null?[]:JSON.parse(
 function addStudent(){
     let confirmation=confirm("do you want to add this student?")
     if(confirmation){
+        var divToRemove = document.getElementById("nostudent");
+        if(divToRemove){
+            divToRemove.parentNode.removeChild(divToRemove)
+        }
         let object={id:0,name:"",E_mail:"",collegeName:"",number:0}
          object.name=document.getElementById("name").value;
          object.E_mail=document.getElementById("email").value;
@@ -50,23 +67,43 @@ function addStudent(){
             div.id = `${object.id}`; // Adding ID to the div
             div.className = 'student_info'; // Adding a class to the div
             const pElement = document.createElement('p');
-            pElement.textContent = `${object.name}`;
+            pElement.textContent = `Name : ${object.name}`;
             div.appendChild(pElement);
             const pElement1 = document.createElement('p');
-            pElement1.textContent = `${object.E_mail}`;
+            pElement1.textContent = `email : ${object.E_mail}`;
             div.appendChild(pElement1);
             const pElement2 = document.createElement('p');
-            pElement2.textContent = `${object.collegeName}`;
+            pElement2.textContent = `College name : ${object.collegeName}`;
             div.appendChild(pElement2);
             const pElement3 = document.createElement('p');
-            pElement3.textContent = `${object.number}`;
+            pElement3.textContent = `Number : ${object.number}`;
             div.appendChild(pElement3);
+            const buttons=document.createElement("div")
+            buttons.className="d-flex gap-3"
+            const update=document.createElement("button");
+            update.className="btn btn-primary"
+            update.id="updateId"
+            update.textContent="Update"
+            const Delete=document.createElement("button")
+            Delete.className="btn btn-secondary ml-1"
+            Delete.id="deleteId"
+            Delete.textContent="Delete"
+            buttons.appendChild(update)
+            buttons.appendChild(Delete)
           let container=document.getElementById("parenDiv");
           container.appendChild(div)
+          container.appendChild(buttons)
          document.getElementById("name").value=""
          document.getElementById("email").value=""
          document.getElementById("company").value=""
          document.getElementById("phone").value=""
          alert("student added successfully")
     }   
+}
+function resetarray(){
+    localStorage.removeItem("myArray");
+    globalArray=[]
+    var container = document.getElementById("parenDiv");
+    container.innerHTML = "";
+    fetcharray()
 }
