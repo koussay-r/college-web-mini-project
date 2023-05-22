@@ -1,19 +1,6 @@
-let globalArray=[];
-function addStudent(){
-    let confirmation=confirm("do you want to add this student?")
-    if(confirmation){
-        let object={id:0,name:"",E_mail:"",collegeName:"",number:0}
-         object.name=document.getElementById("name").value;
-         object.E_mail=document.getElementById("email").value;
-         object.collegeName=document.getElementById("company").value;
-         object.number=document.getElementById("phone").value;
-         object.id=globalArray.length;
-         globalArray.push(object);
-         localStorage.setItem('myArray',JSON.stringify(globalArray))
-         alert("student added successfully")
-    }   
-}
 function fetcharray(){
+    let globalArray=JSON.parse(localStorage.getItem('myArray'));
+    console.log(globalArray)
     if(globalArray.length==0){
         const p = document.createElement('p');
         p.className="Nostudent";
@@ -45,4 +32,20 @@ function fetcharray(){
             container.appendChild(element)
           });
     }
+}
+function addStudent(){
+    let globalArray=[];
+    let confirmation=confirm("do you want to add this student?")
+    if(confirmation){
+        let object={id:0,name:"",E_mail:"",collegeName:"",number:0}
+         object.name=document.getElementById("name").value;
+         object.E_mail=document.getElementById("email").value;
+         object.collegeName=document.getElementById("company").value;
+         object.number=document.getElementById("phone").value;
+         object.id=globalArray.length;
+         globalArray.push(object);
+         localStorage.setItem('myArray',JSON.stringify(globalArray))
+         fetcharray()
+         alert("student added successfully")
+    }   
 }
