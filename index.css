@@ -1,4 +1,8 @@
-
+.Nostudent{
+  text-align: center;
+  font-size: larger;
+  font-weight: 600;
+}
 .get-in-touch {
     margin: 50px auto;
     position: relative;
@@ -74,8 +78,8 @@
   .btns{
     display: flex;
     justify-content: space-between;
-    padding-right: 50px;
-    padding-left: 50px;
+    padding-right: 350px;
+    padding-left: 350px;
     border-width: 3px;
   }
   .get-in-touch{
@@ -109,6 +113,13 @@
       cursor: pointer;
       margin-left: 5px;
     }
+    .btns{
+      display: flex;
+      justify-content: space-between;
+      padding-right: 50px;
+      padding-left: 50px;
+      border-width: 3px;
+    }
   }
   .listEtud{
     padding-top: 250px;
@@ -116,4 +127,13 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+  }
+  .parentDiv{
+    width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    border: 2px solid rgb(20, 20, 20);
+    border-radius: 10px;
   }
