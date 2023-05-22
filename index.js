@@ -1,9 +1,10 @@
 function fetcharray(){
     let globalArray=JSON.parse(localStorage.getItem('myArray'));
     console.log(globalArray)
-    if(globalArray.length==0){
+    if(globalArray==null){
         const p = document.createElement('p');
         p.className="Nostudent";
+        p.id="nostudent"
         p.textContent="No student Found."
         let container=document.getElementById("parenDiv");
         container.appendChild(p)
@@ -33,8 +34,8 @@ function fetcharray(){
           });
     }
 }
+let globalArray=JSON.parse(localStorage.getItem('myArray'))==null?[]:JSON.parse(localStorage.getItem('myArray'));
 function addStudent(){
-    let globalArray=[];
     let confirmation=confirm("do you want to add this student?")
     if(confirmation){
         let object={id:0,name:"",E_mail:"",collegeName:"",number:0}
@@ -45,7 +46,27 @@ function addStudent(){
          object.id=globalArray.length;
          globalArray.push(object);
          localStorage.setItem('myArray',JSON.stringify(globalArray))
-         fetcharray()
+         const div = document.createElement('div');
+            div.id = `${object.id}`; // Adding ID to the div
+            div.className = 'student_info'; // Adding a class to the div
+            const pElement = document.createElement('p');
+            pElement.textContent = `${object.name}`;
+            div.appendChild(pElement);
+            const pElement1 = document.createElement('p');
+            pElement1.textContent = `${object.E_mail}`;
+            div.appendChild(pElement1);
+            const pElement2 = document.createElement('p');
+            pElement2.textContent = `${object.collegeName}`;
+            div.appendChild(pElement2);
+            const pElement3 = document.createElement('p');
+            pElement3.textContent = `${object.number}`;
+            div.appendChild(pElement3);
+          let container=document.getElementById("parenDiv");
+          container.appendChild(div)
+         document.getElementById("name").value=""
+         document.getElementById("email").value=""
+         document.getElementById("company").value=""
+         document.getElementById("phone").value=""
          alert("student added successfully")
     }   
 }
