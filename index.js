@@ -25,6 +25,7 @@ function fetcharray(){
             div.appendChild(pElement2);
             const pElement3 = document.createElement('p');
             pElement3.textContent = `Number : ${object.number}`;
+            div.appendChild(pElement3);
             const buttons=document.createElement("div")
             buttons.className="d-flex gap-3"
             const update=document.createElement("button");
@@ -35,10 +36,9 @@ function fetcharray(){
             Delete.className="btn btn-secondary ml-1"
             Delete.id="deleteId"
             Delete.textContent="Delete"
+            div.appendChild(buttons)
             buttons.appendChild(update)
             buttons.appendChild(Delete)
-            div.appendChild(pElement3);
-            div.appendChild(buttons)
             return div;
           });
           let container=document.getElementById("parenDiv");
@@ -91,8 +91,8 @@ function addStudent(){
             buttons.appendChild(update)
             buttons.appendChild(Delete)
           let container=document.getElementById("parenDiv");
+          div.appendChild(buttons)
           container.appendChild(div)
-          container.appendChild(buttons)
          document.getElementById("name").value=""
          document.getElementById("email").value=""
          document.getElementById("company").value=""

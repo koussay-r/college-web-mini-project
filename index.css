@@ -146,3 +146,12 @@
     width: fit-content;
     padding: 5px;
 }
+
+.contact-form .input-text:invalid {
+  border-color: red;
+}
+  .contact-form .input-text:valid + .label,
+  .contact-form .input-text.not-empty + .label {
+  -webkit-transform: translateY(-24px);
+  transform: translateY(-24px);
+}
